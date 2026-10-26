@@ -1,0 +1,143 @@
+@keyframes hue {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes spark {
+  from {
+    left: -15%;
+  }
+  to {
+    left: 110%;
+  }
+}
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.divider {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  animation: hue 12s linear infinite;
+}
+
+.track {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: 50%;
+  height: 0;
+  transform: rotate(-2.5deg);
+}
+.flip {
+  transform: rotate(2.5deg);
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #22d3ee 30%, #f472b6 70%, transparent);
+  box-shadow:
+    0 0 18px #22d3ee,
+    0 0 44px #f472b6;
+}
+.line2 {
+  position: absolute;
+  left: 10%;
+  right: 20%;
+  top: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.6), transparent);
+}
+.line3 {
+  position: absolute;
+  left: 25%;
+  right: 5%;
+  top: -16px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(249, 168, 212, 0.6), transparent);
+}
+
+.spark {
+  position: absolute;
+  top: -4px;
+  left: -15%;
+  width: 220px;
+  height: 8px;
+  background: radial-gradient(closest-side, #fff, rgba(255, 255, 255, 0));
+  filter: drop-shadow(0 0 12px #67e8f9);
+  animation: spark 3.2s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+
+.label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--cyan-3);
+  background: var(--bg);
+  border: 1px solid rgba(34, 211, 238, 0.5);
+  padding: 6px 14px;
+  white-space: nowrap;
+}
+
+@supports (animation-timeline: view()) {
+  .line {
+    animation: grow linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .divider {
+    height: 96px;
+  }
+  .track {
+    transform: rotate(-4deg);
+  }
+  .flip {
+    transform: rotate(4deg);
+  }
+  .line {
+    box-shadow:
+      0 0 14px #22d3ee,
+      0 0 32px #f472b6;
+  }
+  .line2 {
+    top: 10px;
+  }
+  .line3 {
+    display: none;
+  }
+  .spark {
+    width: 120px;
+    filter: drop-shadow(0 0 10px #67e8f9);
+    animation-duration: 2.6s;
+  }
+  .label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    padding: 5px 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .divider,
+  .spark,
+  .line {
+    animation: none !important;
+  }
+}
