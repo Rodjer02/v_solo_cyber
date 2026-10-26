@@ -2,6 +2,7 @@ import { CHAT, STEPS } from "@/data/content";
 import { isPlaceholder, phoneHref, site } from "@/data/site";
 import { waBookingLink } from "@/lib/whatsapp";
 import { Aurora } from "./Aurora";
+import { WaQr } from "./WaQr";
 import { CheckIcon, ClockIcon, DoubleCheckIcon, PhoneIcon, PinIcon, SendIcon, WhatsAppIcon } from "./icons";
 import styles from "./Contact.module.css";
 
@@ -58,9 +59,7 @@ export function Contact() {
                 </a>
               </div>
               <div className={`${styles.qr} hud`}>
-                [QR-код
-                <br />
-                WhatsApp]
+                <WaQr className={styles.qrCode} />
               </div>
               <span className={styles.hint}>
                 &gt; или сканируй камерой телефона<span className="blink">_</span>
@@ -130,6 +129,17 @@ export function Contact() {
           </div>
         </div>
 
+        <div className={`${styles.map} hud cut reveal`}>
+          <iframe
+            className={styles.mapFrame}
+            src={site.mapEmbedUrl}
+            title={`${site.name} на карте 2ГИС`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        </div>
+
         <div className={styles.tiles}>
           <div className={`${styles.tile} tile reveal cut`}>
             <PinIcon className={styles.tileIcon} />
@@ -162,7 +172,7 @@ export function Contact() {
             <a className={`${styles.link} ghost cut`} href={site.social.instagram} target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
-            <a className={`${styles.link} ghost cut`} href={site.social.twoGis} target="_blank" rel="noopener noreferrer">
+            <a className={`${styles.link} ghost cut`} href={site.social.twoGisRoute} target="_blank" rel="noopener noreferrer">
               2ГИС
             </a>
           </div>

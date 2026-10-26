@@ -14,7 +14,7 @@ npm run dev                  # http://localhost:3000
 
 ## Что заполнить перед релизом
 
-- `src/data/site.ts` — номер WhatsApp (`whatsappPhone`; без него кнопки ведут на `#`), телефон, адрес, город, часы работы, Instagram и 2ГИС. Поля с `TODO`.
+- `src/data/site.ts` — контакты, адрес и карта 2ГИС заполнены по карточке клуба. Осталась ссылка Instagram (`TODO`).
 - `src/data/content.ts` — тарифы (цены VIP room — `null`, на сайте «[цена]»), бонусы, правила.
 - `.env.local` → `NEXT_PUBLIC_SITE_URL` — канонический адрес сайта.
 

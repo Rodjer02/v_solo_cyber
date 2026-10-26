@@ -32,6 +32,7 @@ export function JsonLd() {
     image: `${site.url}/opengraph-image`,
     logo: `${site.url}/icon.svg`,
     priceRange: "800 – 3 000 тг",
+    areaServed: { "@type": "City", name: site.city },
     currenciesAccepted: "KZT",
     makesOffer: offers,
   };
@@ -45,6 +46,8 @@ export function JsonLd() {
       addressCountry: "KZ",
     };
   }
+  business.geo = { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lon };
+  business.hasMap = site.social.twoGis;
   if (site.openingHours.length) business.openingHours = site.openingHours;
   const sameAs = [site.social.instagram, site.social.twoGis].filter((u) => u && u !== "#");
   if (sameAs.length) business.sameAs = sameAs;
